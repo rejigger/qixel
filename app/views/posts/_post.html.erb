@@ -1,0 +1,42 @@
+<div id="<%= dom_id post %>">
+  <p>
+    <strong>Userid:</strong>
+    <%= post.userid %>
+  </p>
+
+  <p>
+    <strong>Photo:</strong>
+    <%= link_to post.photo.filename, post.photo if post.photo.attached? %>
+  </p>
+
+  <p>
+    <strong>Longitude:</strong>
+    <%= post.longitude %>
+  </p>
+
+  <p>
+    <strong>Lattitude:</strong>
+    <%= post.lattitude %>
+  </p>
+
+  <p>
+    <strong>Posttime:</strong>
+    <%= post.posttime %>
+  </p>
+
+  <p>
+    <strong>Title:</strong>
+    <%= post.title %>
+  </p>
+
+  <p>
+    <strong>Commentid:</strong>
+    <%= post.commentid %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= post.comment %>
+  </p>
+
+</div>

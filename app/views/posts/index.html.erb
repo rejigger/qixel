@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Posts" %>
+
+<h1>Posts</h1>
+
+<div id="posts">
+  <% @posts.each do |post| %>
+    <%= image_tag(post.photo) %>
+    <br>
+    <%= post.posttime.in_time_zone(@user_timezone).strftime("%B %d, %Y %I:%M %p") %>
+    <p>
+
+
+    <%#= render post %> <!--commented out-->
+
+    <p>
+      <%= link_to "Show this post", post %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New post", new_post_path %>
