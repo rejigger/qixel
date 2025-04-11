@@ -1,15 +1,19 @@
+require 'time'
+
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.order(created_at: :desc)
     @user_timezone = "Eastern Time (US & Canada)"
   end
 
   # GET /posts/1 or /posts/1.json
   def show
+    @post = Post.find(params[:id])
+    @user_timezone = "Eastern Time (US & Canada)"
   end
 
   # GET /posts/new
@@ -62,11 +66,11 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params.expect(:id))
+      @post = Post.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.expect(post: [ :userid, :photo, :longitude, :lattitude, :posttime, :title, :commentid, :comment ])
+      params.require(:post).permit(:userid, :photo, :longitude, :latitude, :posttime, :title, :commentid, :comment)
     end
 end
