@@ -24,9 +24,7 @@ module Qixel
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    Rails.application.configure do
-      config.active_storage.variant_processor = :vips  # or :mini_magick
-    end
+
   end
 end
 
