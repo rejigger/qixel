@@ -13,7 +13,9 @@ module Qixel
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
-    config.autoload_lib(ignore: %w[assets tasks])
+    config.eager_load_paths << Rails.root.join("lib")
+    config.autoload_paths << Rails.root.join("lib")
+
 
     # Use vips for faster image processing
     config.active_storage.variant_processor = :vips
