@@ -31,6 +31,14 @@
   <body>
     <main class="container mx-auto mt-2 px-3 sm:px-5 flex flex-col items-center justify-center">
 
+    <% if flash[:alert] %>
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-4">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+
+
       <%= yield %>
     </main>
   </body>

@@ -1,6 +1,6 @@
 <%= form_with(model: post) do |form| %>
   <% if post.errors.any? %>
-    <div style="color: red">
+    <div class="mb-4 text-red-600">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
@@ -10,17 +10,18 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
+<!--
+  <div class="mb-4">
     <%= form.label :userid, style: "display: block" %>
-    <%= form.number_field :userid %>
+    <%= form.number_field :userid, class: "w-full px-3 py-2 border rounded bg-white" %>
   </div>
+  -->
 
-  <div>
+  <div class="mb-4">
     <%= form.label :photo, style: "display: block" %>
-    <%= form.file_field :photo %>
+    <%= form.file_field :photo, class:"w-full px-3 py-2 border rounded bg-white" %>
   </div>
-
+<!--
   <div>
     <%= form.label :gpslon, style: "display: block" %>
     <%= form.text_field :gpslon %>
@@ -35,23 +36,24 @@
     <%= form.label :posttime, style: "display: block" %>
     <%= form.datetime_field :posttime %>
   </div>
-
+-->
   <div>
     <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "w-full px-3 py-2 border rounded bg-white" %>
   </div>
-
+<!--
   <div>
     <%= form.label :commentid, style: "display: block" %>
     <%= form.number_field :commentid %>
   </div>
+  -->
 
   <div>
     <%= form.label :comment, style: "display: block" %>
-    <%= form.textarea :comment %>
+    <%= form.textarea :comment, class: "w-full px-3 py-2 border rounded bg-white" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Post", class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" %>
   </div>
 <% end %>

@@ -22,11 +22,17 @@
 
       <%#= render post %> <!--commented out-->
       <br>
-      <%= link_to "Show this post", post %>
+      <%= link_to "Show this post", post, class: "bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600" %>
     </div>
   <% end %>
 </div>
 
-<%= link_to "New post", new_post_path %>
+<%= link_to "New post", new_post_path, class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" %>
+
+<% if logged_in? %>
+  <%= button_to "Logout", logout_path, method: :delete, class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" %>
+<% else %>
+  <%= link_to "Login", login_path %>
+<% end %>
 
 </div>

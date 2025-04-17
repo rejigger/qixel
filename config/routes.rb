@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   get "admin" => "admin#index"
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
   resources :users
   resource :session
   resources :passwords, param: :token
@@ -16,5 +20,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :posts
+  resources :posts do
+    resources :comments, only: [:create]
+  end
 end
