@@ -5,8 +5,6 @@ FROM ruby:3.3
 RUN apt-get update -qq && apt-get install -y \
   build-essential \
   libpq-dev \
-  nodejs \
-  yarn \
   imagemagick \
   libvips \
   curl
@@ -14,16 +12,14 @@ RUN apt-get update -qq && apt-get install -y \
 # Set working directory
 WORKDIR /app
 
-# Install bundler
+# Install bundler and gems
 COPY Gemfile Gemfile.lock ./
 RUN gem install bundler:2.5.23
 RUN bundle install
 
-# Copy rest of the app
+# Copy the rest of the app
 COPY . .
 
-# Precompile assets (optional: remove if not needed yet)
-RUN bundle exec rake assets:precompile
-
-# Start the Rails server by default
+# Skip assets:precompile since you’re not using JS pipeline
+# CMD to start the Rails server
 CMD ["bin/rails", "server", "-b", "0.0.0.0"]
